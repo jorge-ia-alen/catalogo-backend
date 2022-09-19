@@ -39,7 +39,7 @@ def env_config(name, default):
    app.config[name] = os.environ.get(name, default=default)
 
 #Database config
-env_config('SQLALCHEMY_DATABASE_URI','postgresql://postgres:Paraguay12@localhost:5432/todo')
+env_config('SQLALCHEMY_DATABASE_URI','postgresql://postgres:postgres@localhost:5432/todo')
 
 #SQLAlchemy config
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
