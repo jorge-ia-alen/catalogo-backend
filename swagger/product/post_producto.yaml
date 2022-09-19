@@ -1,12 +1,12 @@
-Crear una tarea
+Crear un producto
 ---
 tags:
-- "task"
+- "producto"
 responses:
   200:
     description: Se trajo correctamente el registro
   500:
-    description: No se pudo crear la tarea
+    description: No se pudo crear el producto
 
 parameters:
   - name: body
@@ -20,10 +20,16 @@ definitions:
     properties:
       id:
         type: "int64"
+      nombre: 
+        type: "String"
       descrip:
         type: "string"
-      status:
+      estado:
         type: "string"
+      precio:
+      type: "float"
     example:
-      descrip: "Hola soy German"
-      status: "Vid"
+      nombre: "Remera"
+      descrip: "Azul"
+      estado: "Disponible"
+      precio: "50.000"

@@ -1,10 +1,10 @@
-Borrar una tarea
+Borrar un producto
 ---
 tags:
-- "task"
+- "product"
 responses:
   200:
-    description: Se borro correctamente el registro
+    description: Se borro correctamente el producto
 
 parameters:
   - name: id

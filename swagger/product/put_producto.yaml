@@ -1,12 +1,12 @@
-Actualiza una tarea
+Actualiza un producto
 ---
 tags:
-- "task"
+- "producto"
 responses:
   200:
     description: Se trajo correctamente el registro
   404:
-    description: No se encuentra la tarea
+    description: No se encuentra el producto
 
 parameters:
   - name: id
@@ -23,11 +23,17 @@ definitions:
     properties:
       id:
         type: "int64"
+      nombre: 
+      type: "string"
       descrip:
         type: "string"
-      status:
+      estado:
         type: "string"
+      precio:
+      type: "float"
     example:
-      id: 17
-      descrip: "Hola soy German"
-      status: "Vid"
+      id: 11
+      nombre: "Remera"
+      descrip: "Azul"
+      estado: "Disponible"
+      precio: "50.000"

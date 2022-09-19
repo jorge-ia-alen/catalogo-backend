@@ -1,10 +1,10 @@
-Obtener una tarea
+Obtener un producto
 ---
 tags:
-- "task"
+- "producto"
 responses:
   200:
-    description: Se trajo correctamente el registor
+    description: Se trajo correctamente el producto
   401:
     description: Las credenciales proveidas en los datos de login son invalidas
 parameters:

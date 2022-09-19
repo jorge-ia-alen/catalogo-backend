@@ -1,15 +1,15 @@
-Buscar una tarea
+Buscar un producto
 ---
 tags:
 - "search"
 responses:
   200:
-    description: La busqueda fue realizada estupendamente
+    description: La busqueda fue realizada correctamente
 
 parameters:
   - name: query
     in: page
-    description: Tareas actuales de la pagina
+    description: Productos actuales de la pagina
     default: 1
   - name: body
     in: body
@@ -22,11 +22,16 @@ definitions:
     properties:
       id:
         type: "int64"
+      nombre: "string"
       descrip:
         type: "string"
-      status:
+      estado:
         type: "string"
+      precio:
+      type: "float"
     example:
-      id: 17
-      descrip: "Hola soy German"
-      status: "Vid"
+      id: 10
+      nombre: "Remera"
+      descrip: "Azul"
+      estado: "Disponible"
+      precio: "50.000"
