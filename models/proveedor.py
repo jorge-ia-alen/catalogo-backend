@@ -3,23 +3,26 @@ from db import db
 from flask_restful.reqparse import Namespace
 from utils import _assign_if_something
 
-class TaskModel(db.Model):
-    __tablename__ = 'task'
+class ProveedorModel(db.Model):
+    __tablename__ = 'proveedor'
 
     id = db.Column(db.Integer, primary_key=True)
-    descrip = db.Column(db.String)
-    status = db.Column(db.String)
+    nombre = db.Column(db.String)
+    direccion = db.Column(db.String)
+    telefono = db.Column(db.String)
 
-    def __init__(self, id, descrip, status):
+    def __init__(self, id, nombre, direccion, telefono):
         self.id = id
-        self.descrip = descrip
-        self.status = status
+        self.nombre = nombre
+        self.direccion = direccion
+        self.telefono = telefono
 
     def json(self, depth =0):
         json = {
             'id': self.id,
-            'descrip': self.descrip,
-            'status': self.status
+            'nombre': self.nombre,
+            'direccion': self.direccion,
+            'telefono': self.telefono
         }
 
         return json
@@ -37,5 +40,5 @@ class TaskModel(db.Model):
         db.session.commit()
 
     def from_reqparse(self, newdata: Namespace):
-        for no_pk_key in ['descrip','status']:
+        for no_pk_key in ['nombre','direccion','telefono']:
             _assign_if_something(self, newdata, no_pk_key)
