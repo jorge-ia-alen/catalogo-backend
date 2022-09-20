@@ -14,14 +14,13 @@ class Product(Resource):
     parser.add_argument('estado', type=str)
     parser.add_argument('precio', type=float)
 
-    @swag_from('../swagger/task/get_product.yaml')
+    @swag_from('../swagger/product/get_producto.yaml')
     def get(self, id):
         producto = ProductModel.find_by_id(id)
         if producto:
             return producto.json()
         return {'message':'No se encuentra el producto'},404
-    
-    @swag_from('../swagger/task/put_product.yaml')
+    @swag_from('../swagger/product/put_producto.yaml')
     def put(self, id):
         producto = ProductModel.find_by_id(id)
         if producto:
@@ -29,21 +28,18 @@ class Product(Resource):
             producto.from_reqparse(newdata)
             producto.save_to_db()
             return producto.json()
-
-    @swag_from('../swagger/task/delete_product.yaml')
+    @swag_from('../swagger/product/delete_producto.yaml')
     def delete(self, id):
         producto = ProductModel.find_by_id(id)
         if producto:
             producto.delete_from_db()
         return {'message': "Se ha borrado el producto"}
-
-class TaskList(Resource):
-    @swag_from('../swagger/task/list_product.yaml')
+class ProductList(Resource):
+    @swag_from('../swagger/product/list_producto.yaml')
     def get(self):
         query = ProductModel.query
-        return paginated_results(query)
-        
-    @swag_from('../swagger/task/post_product.yaml')
+        return paginated_results(query)    
+    @swag_from('../swagger/product/post_producto.yaml')
     def post(self):
         data = Product.parser.parse_args()
 
@@ -55,9 +51,8 @@ class TaskList(Resource):
             print(e)
             return {'message':'Ocurrio un error al agregar el producto'},500
         return producto.json(),201
-
-class TaskSearch(Resource):
-    @swag_from('../swagger/task/search_task.yaml')
+class ProductSearch(Resource):
+    @swag_from('../swagger/product/search_producto.yaml')
     def post(self):
         query = ProductModel.query
         if request.json:
@@ -67,5 +62,4 @@ class TaskSearch(Resource):
             query = restrict(query,filtros,'descrip',lambda x: ProductModel.descrip.contains(x))
             query = restrict(query,filtros,'estado',lambda x: ProductModel.estado.contains(x))
             query = restrict(query,filtros,'precio',lambda x: ProductModel.precio.contains(x))
-
         return paginated_results(query)

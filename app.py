@@ -1,5 +1,5 @@
 from flask import Flask, redirect
-from resources.product import Product, ProductList, ProductSearch
+from resources.product import ProductList, ProductSearch, Product
 from flask_restful import Api
 from flasgger import Swagger
 
@@ -17,7 +17,7 @@ PREFIX = os.environ.get('PREFIX_PATH', '/api')
  
 # Swagger config
 app.config['SWAGGER'] = {
-   'title': 'todo-backend',
+   'title': 'catalogo-backend',
    'version': '1.0.0',
    'description': 'API de servicios REST en Flask',
    'uiversion': 2,

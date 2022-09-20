@@ -7,15 +7,13 @@ responses:
     description: Se trajo correctamente el registro
   500:
     description: No se pudo crear el producto
-
 parameters:
   - name: body
     in: body
     schema:
-      $ref: "#/definitions/Taskpost"
-
+      $ref: "#/definitions/Productopost"
 definitions:
-  Taskpost:
+  Productopost:
     type: "object"
     properties:
       id:
@@ -27,7 +25,7 @@ definitions:
       estado:
         type: "string"
       precio:
-      type: "float"
+        type: "float"
     example:
       nombre: "Remera"
       descrip: "Azul"

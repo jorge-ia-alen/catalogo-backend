@@ -7,7 +7,6 @@ responses:
     description: Se trajo correctamente el registro
   404:
     description: No se encuentra el producto
-
 parameters:
   - name: id
     in: path
@@ -15,22 +14,21 @@ parameters:
   - name: body
     in: body
     schema:
-      $ref: "#/definitions/Taskput"
-
+      $ref: "#/definitions/Productoput"
 definitions:
-  Taskput:
+  Productoput:
     type: "object"
     properties:
       id:
         type: "int64"
       nombre: 
-      type: "string"
+        type: "string"
       descrip:
         type: "string"
       estado:
         type: "string"
       precio:
-      type: "float"
+        type: "float"
     example:
       id: 11
       nombre: "Remera"
