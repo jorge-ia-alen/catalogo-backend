@@ -53,7 +53,7 @@ def welcome():
    return redirect(f"{PREFIX}/apidocs", code=302)
  
 api.add_resource(Proveedor, f'{PREFIX}/proveedores/<id>')
-api.add_resource(ProveedorList, f'{PREFIX}/tasks')
+api.add_resource(ProveedorList, f'{PREFIX}/proveedores')
 # api.add_resource(TaskSearch, f'{PREFIX}/search/tasks')
 
 # Bloque opcional para ejecutar con python app.py

@@ -17,7 +17,7 @@ class ProveedorModel(db.Model):
         self.direccion = direccion
         self.telefono = telefono
 
-    def json(self, depth =0):
+    def json(self, depth=0):
         json = {
             'id': self.id,
             'nombre': self.nombre,
