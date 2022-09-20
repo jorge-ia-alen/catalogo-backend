@@ -23,7 +23,7 @@ class Proveedor(Resource):
 class ProveedorList(Resource):
     @swag_from('../swagger/task/list_proveedor.yaml')
     def get(self):
-        query = Proveedor.query
+        query = ProveedorModel.query
         return paginated_results(query)
         
     # @swag_from('../swagger/task/post_task.yaml')
