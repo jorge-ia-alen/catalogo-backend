@@ -1,6 +1,8 @@
 from flask import Flask, redirect
 
 from resources.proveedor import Proveedor, ProveedorList
+from resources.product import ProductList, ProductSearch, Product
+from resources.categoria import Categoria, CategoriaList
 from flask_restful import Api
 from flasgger import Swagger
 
@@ -18,7 +20,7 @@ PREFIX = os.environ.get('PREFIX_PATH', '/api')
  
 # Swagger config
 app.config['SWAGGER'] = {
-   'title': 'todo-backend',
+   'title': 'catalogo-backend',
    'version': '1.0.0',
    'description': 'API de servicios REST en Flask',
    'uiversion': 2,
@@ -51,10 +53,17 @@ app.config['SQLALCHEMY_ECHO'] = False
 @app.route(f'{PREFIX}')
 def welcome():
    return redirect(f"{PREFIX}/apidocs", code=302)
- 
+
+# proveedores
 api.add_resource(Proveedor, f'{PREFIX}/proveedores/<id>')
 api.add_resource(ProveedorList, f'{PREFIX}/proveedores')
-# api.add_resource(TaskSearch, f'{PREFIX}/search/tasks')
+# product
+api.add_resource(Product, f'{PREFIX}/productos/<id>')
+api.add_resource(ProductList, f'{PREFIX}/productos')
+api.add_resource(ProductSearch, f'{PREFIX}/search/productos')
+# categorias
+api.add_resource(Categoria, f'{PREFIX}/categorias/<id>')
+api.add_resource(CategoriaList, f'{PREFIX}/categorias')
 
 # Bloque opcional para ejecutar con python app.py
 if __name__ == '__main__':

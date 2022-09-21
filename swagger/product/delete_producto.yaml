@@ -1,0 +1,11 @@
+Borrar un producto
+---
+tags:
+- "producto"
+responses:
+  200:
+    description: Se borro correctamente el producto
+parameters:
+  - name: id
+    in: path
+    required: false

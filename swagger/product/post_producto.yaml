@@ -1,0 +1,33 @@
+Crear un producto
+---
+tags:
+- "producto"
+responses:
+  200:
+    description: Se trajo correctamente el registro
+  500:
+    description: No se pudo crear el producto
+parameters:
+  - name: body
+    in: body
+    schema:
+      $ref: "#/definitions/Productopost"
+definitions:
+  Productopost:
+    type: "object"
+    properties:
+      id:
+        type: "int64"
+      nombre: 
+        type: "String"
+      descrip:
+        type: "string"
+      estado:
+        type: "string"
+      precio:
+        type: "float"
+    example:
+      nombre: "Remera"
+      descrip: "Azul"
+      estado: "Disponible"
+      precio: "50.000"

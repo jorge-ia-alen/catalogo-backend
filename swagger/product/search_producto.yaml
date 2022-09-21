@@ -1,0 +1,36 @@
+Buscar un producto
+---
+tags:
+- "search"
+responses:
+  200:
+    description: La busqueda fue realizada correctamente
+parameters:
+  - name: query
+    in: page
+    description: Productos actuales de la pagina
+    default: 1
+  - name: body
+    in: body
+    schema:
+      $ref: "#/definitions/ProductoSearch"
+definitions:
+  ProductoSearch:
+    type: "object"
+    properties:
+      id:
+        type: "int64"
+      nombre: 
+        type: "string"
+      descrip:
+        type: "string"
+      estado:
+        type: "string"
+      precio:
+        type: "float"
+    example:
+      id: 10
+      nombre: "Remera"
+      descrip: "Azul"
+      estado: "Disponible"
+      precio: "50.000"
