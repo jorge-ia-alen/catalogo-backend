@@ -1,31 +1,25 @@
 from argparse import Namespace
+from xml.dom.minidom import Identified
 from db import db
 from flask_restful.reqparse import Namespace
 from utils import _assign_if_something
 
-class ProductModel(db.Model):
-    __tablename__ = 'producto'
+class CatalogoModel(db.Model):
+    __tablename__ = 'catalogo'
 
     id = db.Column(db.Integer, primary_key=True)
-    nombre = db.Column(db.String)
     descrip = db.Column(db.String)
-    estado = db.Column(db.String)
-    precio = db.Column(db.Float)
+    
 
-    def __init__(self, id, nombre, descrip, estado, precio):
+    def __init__(self, id, descrip):
         self.id = id
-        self.nombre = nombre
         self.descrip = descrip
-        self.estado = estado
-        self.precio = precio
 
     def json(self, depth =0):
         json = {
-            'id': self.id,
-            'nombre': self.nombre,
+            'id': self.id, 
             'descrip': self.descrip,
-            'estado': self.estado,
-            'precio': self.precio
+
         }
         return json
     
@@ -42,5 +36,5 @@ class ProductModel(db.Model):
         db.session.commit()
 
     def from_reqparse(self, newdata: Namespace):
-        for no_pk_key in ['nombre', 'descrip','estado', 'precio']:
+        for no_pk_key in [ 'descrip']:
             _assign_if_something(self, newdata, no_pk_key)

@@ -1,0 +1,12 @@
+Lista de catalogos
+---
+tags: 
+- "catalogo"
+responses:
+  200:
+    description: Se obtiene la lista de catalogo
+parameters:
+  - name: page
+    in: query
+    default: 1
+    description: Catalogo actuales de la pagina
