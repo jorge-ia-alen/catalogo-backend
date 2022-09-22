@@ -1,0 +1,12 @@
+Lista de Proveedor
+---
+tags: 
+- "proveedor"
+responses:
+  200:
+    description: Se obtiene la lista de proveedores
+parameters:
+  - name: page
+    in: query
+    default: 1
+    description: Proveedores actuales de la pagina

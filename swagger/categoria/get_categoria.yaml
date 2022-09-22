@@ -1,10 +1,10 @@
-Obtener un producto
+Obtener una categoria
 ---
 tags:
-- "producto"
+- "categoria"
 responses:
   200:
-    description: Se trajo correctamente el producto
+    description: Se trajo correctamente el registros
   401:
     description: Las credenciales proveidas en los datos de login son invalidas
 parameters:
