@@ -11,13 +11,17 @@ class ProductModel(db.Model):
     descrip = db.Column(db.String)
     estado = db.Column(db.String)
     precio = db.Column(db.Float)
+    proveedor_id = db.Column(db.Integer)
+    categoria_id = db.Column(db.Integer)
 
-    def __init__(self, id, nombre, descrip, estado, precio):
+    def __init__(self, id, nombre, descrip, estado, precio, proveedor_id, categoria_id):
         self.id = id
         self.nombre = nombre
         self.descrip = descrip
         self.estado = estado
         self.precio = precio
+        self.proveedor_id = proveedor_id
+        self.categoria_id = categoria_id
 
     def json(self, depth=0):
         json = {
@@ -25,7 +29,9 @@ class ProductModel(db.Model):
             'nombre': self.nombre,
             'descrip': self.descrip,
             'estado': self.estado,
-            'precio': self.precio
+            'precio': self.precio,
+            'proveedor_id': self.proveedor_id,
+            'categoria_id': self.categoria_id
         }
         return json
     
@@ -42,5 +48,5 @@ class ProductModel(db.Model):
         db.session.commit()
 
     def from_reqparse(self, newdata: Namespace):
-        for no_pk_key in ['nombre', 'descrip','estado', 'precio']:
+        for no_pk_key in ['nombre', 'descrip','estado', 'precio', 'proveedor_id', 'categoria_id']:
             _assign_if_something(self, newdata, no_pk_key)

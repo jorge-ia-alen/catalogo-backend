@@ -28,9 +28,14 @@ definitions:
         type: "string"
       precio:
         type: "float"
+      proveedor_id:
+        type: "int64"
+      categoria_id:
+        type: "int64"
     example:
-      id: 10
       nombre: "Remera"
       descrip: "Azul"
       estado: "Disponible"
-      precio: "50.000"
+      precio: "50000"
+      proveedor_id: "1"
+      categoria_id: "1"

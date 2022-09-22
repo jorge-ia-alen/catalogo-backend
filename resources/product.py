@@ -3,6 +3,7 @@ from flask_restful import Resource,reqparse
 from flasgger import swag_from
 from flask import request
 from utils import paginated_results, restrict
+from sqlalchemy import func 
 
 
 class Product(Resource):
@@ -13,10 +14,12 @@ class Product(Resource):
     parser.add_argument('descrip', type = str)
     parser.add_argument('estado', type=str)
     parser.add_argument('precio', type=float)
+    parser.add_argument('proveedor_id',type=int)
+    parser.add_argument('categoria_id',type=int)
 
     @swag_from('../swagger/product/get_producto.yaml')
     def get(self, id):
-        producto = ProductModel.find_by_id(id)
+        producto = ProductModel.find_by_id(ProductModel.id)
         if producto:
             return producto.json()
         return {'message':'No se encuentra el producto'},404
@@ -58,8 +61,10 @@ class ProductSearch(Resource):
         if request.json:
             filtros = request.json
             query = restrict(query,filtros,'id',lambda x: ProductModel.id == x)
-            query = restrict(query,filtros,'nombre',lambda x: ProductModel.nombre.contains(x))
+            query = restrict(query,filtros,'nombre',lambda x: func.lower(ProductModel.nombre).contains(x.lower()))
             query = restrict(query,filtros,'descrip',lambda x: ProductModel.descrip.contains(x))
             query = restrict(query,filtros,'estado',lambda x: ProductModel.estado.contains(x))
             query = restrict(query,filtros,'precio',lambda x: ProductModel.precio.contains(x))
+            query = restrict(query,filtros,'proveedor_id',lambda x: ProductModel.precio.contains(x))
+            query = restrict(query,filtros,'categoria_id',lambda x: ProductModel.precio.contains(x))
         return paginated_results(query)
