@@ -33,9 +33,9 @@ definitions:
       categoria_id:
         type: "int64"
     example:
-      nombre: "Remera"
-      descrip: "Azul"
+      nombre: "Sprite"
+      descrip: "Bebida sin alcohol gasificada sabor cítrico alimonado."
       estado: "Disponible"
-      precio: "50000"
+      precio: "5000"
       proveedor_id: "1"
       categoria_id: "1"

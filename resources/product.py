@@ -45,7 +45,9 @@ class ProductList(Resource):
     @swag_from('../swagger/product/post_producto.yaml')
     def post(self):
         data = Product.parser.parse_args()
-
+        producto.from_reqparse(data)
+        producto.save_to_db()
+        
         producto = ProductModel(**data)
 
         try:

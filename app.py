@@ -1,5 +1,5 @@
 from flask import Flask, redirect
-
+from flask_cors import CORS
 from resources.proveedor import Proveedor, ProveedorList
 from resources.product import ProductList, ProductSearch, Product
 from resources.categoria import Categoria, CategoriaList
@@ -48,6 +48,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
 app.config['SQLALCHEMY_ECHO'] = False
 
+CORS(app, resources={r'/*':{'origins':'*'}})
 
 @app.route('/')
 @app.route(f'{PREFIX}')
