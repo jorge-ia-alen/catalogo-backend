@@ -1,7 +1,7 @@
 from flask import Flask, redirect
 from flask_cors import CORS
 from resources.proveedor import Proveedor, ProveedorList
-from resources.product import ProductList, ProductSearch, Product
+from resources.producto import ProductList, ProductSearch, Product
 from resources.categoria import Categoria, CategoriaList
 from flask_restful import Api
 from flasgger import Swagger

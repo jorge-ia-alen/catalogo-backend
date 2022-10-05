@@ -4,7 +4,7 @@ tags:
 - "producto"
 responses:
   200:
-    description: Se trajo correctamente el registro
+    description: Se trajo correctamente el producto
   404:
     description: No se encuentra el producto
 parameters:

@@ -4,9 +4,9 @@ tags:
 - "categoria"
 responses:
   200:
-    description: Se obtiene la lista de proveedores
+    description: Se obtiene la lista de categorias
 parameters:
   - name: page
     in: query
     default: 1
-    description: Proveedores actuales de la pagina
+    description: Categorias actuales de la pagina

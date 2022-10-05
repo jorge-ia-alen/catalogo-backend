@@ -1,4 +1,4 @@
-from models.product import ProductModel
+from models.producto import ProductModel
 from flask_restful import Resource,reqparse
 from flasgger import swag_from
 from flask import request
@@ -45,8 +45,6 @@ class ProductList(Resource):
     @swag_from('../swagger/product/post_producto.yaml')
     def post(self):
         data = Product.parser.parse_args()
-        producto.from_reqparse(data)
-        producto.save_to_db()
         
         producto = ProductModel(**data)
 
@@ -67,6 +65,6 @@ class ProductSearch(Resource):
             query = restrict(query,filtros,'descrip',lambda x: ProductModel.descrip.contains(x))
             query = restrict(query,filtros,'estado',lambda x: ProductModel.estado.contains(x))
             query = restrict(query,filtros,'precio',lambda x: ProductModel.precio.contains(x))
-            query = restrict(query,filtros,'proveedor_id',lambda x: ProductModel.precio.contains(x))
-            query = restrict(query,filtros,'categoria_id',lambda x: ProductModel.precio.contains(x))
+            query = restrict(query,filtros,'proveedor_id',lambda x: ProductModel.proveedor_id ==x)
+            query = restrict(query,filtros,'categoria_id',lambda x: ProductModel.cateroia_id == x)
         return paginated_results(query)

@@ -4,7 +4,7 @@ tags:
 - "producto"
 responses:
   200:
-    description: Se creo correctamente el registro
+    description: Se creo correctamente el producto
   500:
     description: No se pudo crear el producto
 parameters:

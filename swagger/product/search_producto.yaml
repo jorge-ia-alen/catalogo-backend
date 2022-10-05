@@ -33,6 +33,7 @@ definitions:
       categoria_id:
         type: "int64"
     example:
+      id: 1
       nombre: "Sprite"
       descrip: "Bebida sin alcohol gasificada sabor cítrico alimonado."
       estado: "Disponible"
